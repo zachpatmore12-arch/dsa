@@ -14,9 +14,7 @@ def webhook():
         if not discord_url:
             return jsonify({'error': 'DISCORD_WEBHOOK_URL not set'}), 400
         
-        response = requests.post(discord_url, json={
-            {json.dumps(payload, indent=2)}
-        })
+        response = requests.post(discord_url,{json.dumps(payload, indent=2)})
         
         if response.status_code != 204:
             return jsonify({'error': 'Failed to send to Discord'}), 500
